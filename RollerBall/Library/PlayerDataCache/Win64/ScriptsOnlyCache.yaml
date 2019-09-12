@@ -889,4 +889,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/malte/RollerBall/RollerBall.exe
+  playerPath: C:/Users/malte/MouseBuild/RollerBall.exe
