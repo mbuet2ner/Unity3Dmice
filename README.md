@@ -1,6 +1,6 @@
 ![logo](https://upload.wikimedia.org/wikipedia/commons/3/39/Creative-Tail-Animal-mouse.svg)
 # Unity3Dmice
-Software Project University of Oulu. The aim is to create a basic testbed for fast general AI prototying and testing powered by Unity3D and [Unity Ml-Agents Toolkit](https://github.com/Unity-Technologies/ml-agents).
+Software Project University of Oulu. The goal is to create a basic testbed for fast general AI prototyping and testing powered by Unity3D and [Unity Ml-Agents Toolkit](https://github.com/Unity-Technologies/ml-agents).
 
 ## Basic info
 The provided RollerAgent project is based on [this](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Create-New.md) tutorial. More information is available from [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-ML-Agents.md) and [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md).
