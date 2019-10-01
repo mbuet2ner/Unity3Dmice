@@ -25,6 +25,8 @@ TagManager:
   - iWall
   - switchOff
   - pit
+  - tree
+  - fence
   layers:
   - Default
   - TransparentFX

@@ -58,7 +58,9 @@ public class MouseAgent : Agent
         // Reached target
         if (distanceToTarget < 1.42f)
         {
-            SetReward(1.0f);
+            // Set rewards reset all previous rewards
+            // SetReward(1.0f);
+            AddReward(1.0f);
             Done();
         }
 
@@ -68,5 +70,14 @@ public class MouseAgent : Agent
         //    Done();
         //}
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("fence"))
+        {
+            AddReward(-0.1f);
+            Done();
+        }
     }
 }
