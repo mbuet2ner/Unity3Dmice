@@ -18,13 +18,8 @@ public class MouseAgent : Agent
             // If the Agent fell, zero its momentum
             this.rBody.angularVelocity = Vector3.zero;
             this.rBody.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+            this.transform.localPosition = new Vector3(-11f, 0.4f, -13f);
         }
-
-        // Move the target to a new spot
-        Target.localPosition = new Vector3(Random.value * 8 - 4,
-                                      0.5f,
-                                      Random.value * 8 - 4);
     }
 
     public override void CollectObservations()
@@ -51,22 +46,30 @@ public class MouseAgent : Agent
         float distanceToTarget = Vector3.Distance(this.transform.localPosition,
                                                   Target.localPosition);
 
-        // Reset when it gets near some asset?
+        // Reset when it takes to long
 
-        // Getting closer
 
+        // Getting closer to target
+        //if (distanceToTarget > 1.42f)
+        //{
+        //    AddReward(-0.001f * distanceToTarget);
+        //}
         // Reached target
         if (distanceToTarget < 1.42f)
         {
-            SetReward(1.0f);
+            // Set rewards reset all previous rewards
+            // SetReward(1.0f);
+            AddReward(1.0f);
             Done();
         }
+    }
 
-        // Fell off platform
-        //if (this.transform.localPosition.y < 0)
-        //{
-        //    Done();
-        //}
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("fence"))
+        {
+            AddReward(-0.1f);
+            Done();
+        }
     }
 }
