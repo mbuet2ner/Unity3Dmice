@@ -40,7 +40,7 @@ public class MouseAgent : Agent
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = vectorAction[0];
         controlSignal.z = vectorAction[1];
-        rBody.AddForce(controlSignal * speed);
+        rBody.AddForce(controlSignal * speed * 100);
 
         // Rewards
         float distanceToTarget = Vector3.Distance(this.transform.localPosition,
@@ -69,7 +69,6 @@ public class MouseAgent : Agent
         if (collision.gameObject.CompareTag("fence"))
         {
             AddReward(-0.1f);
-            Done();
         }
     }
 }
