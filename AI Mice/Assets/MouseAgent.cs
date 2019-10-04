@@ -5,21 +5,21 @@ using MLAgents;
 public class MouseAgent : Agent
 {
     Rigidbody rBody;
+    private Vector3 startPos;
+    private bool dead = false;
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
+        startPos = transform.localPosition;
     }
 
     public Transform Target;
     public override void AgentReset()
     {
-        if (this.transform.localPosition.y < 0)
-        {
-            // If the Agent fell, zero its momentum
-            this.rBody.angularVelocity = Vector3.zero;
-            this.rBody.velocity = Vector3.zero;
-            this.transform.localPosition = new Vector3(-11f, 0.4f, -13f);
-        }
+        dead = false;
+        transform.localPosition = startPos;
+        this.rBody.angularVelocity = Vector3.zero;
+        this.rBody.velocity = Vector3.zero;
     }
 
     public override void CollectObservations()
@@ -36,31 +36,38 @@ public class MouseAgent : Agent
     public float speed = 10;
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        // Actions, size = 2
-        Vector3 controlSignal = Vector3.zero;
-        controlSignal.x = vectorAction[0];
-        controlSignal.z = vectorAction[1];
-        rBody.AddForce(controlSignal * speed * 100);
-
-        // Rewards
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition,
-                                                  Target.localPosition);
-
-        // Reset when it takes to long
-
-
-        // Getting closer to target
-        //if (distanceToTarget > 1.42f)
-        //{
-        //    AddReward(-0.001f * distanceToTarget);
-        //}
-        // Reached target
-        if (distanceToTarget < 1.42f)
+        if (dead)
         {
-            // Set rewards reset all previous rewards
-            // SetReward(1.0f);
-            AddReward(1.0f);
+            SetReward(-1f);
             Done();
+        }
+        else
+        {
+            SetReward(0.01f);
+            // Actions, size = 2
+            Vector3 controlSignal = Vector3.zero;
+            controlSignal.x = vectorAction[0];
+            controlSignal.z = vectorAction[1];
+            rBody.AddForce(controlSignal * speed);
+
+            // Rewards
+            float distanceToTarget = Vector3.Distance(this.transform.localPosition,
+                                                      Target.localPosition);
+
+            // Getting closer to target
+            if (distanceToTarget > 1.42f)
+            {
+                SetReward(-0.001f * distanceToTarget);
+            }
+
+            // Reached target
+            if (distanceToTarget < 1.42f)
+            {
+                // Set rewards reset all previous rewards
+                // SetReward(1.0f);
+                SetReward(1.0f);
+                Done();
+            }
         }
     }
 
@@ -68,7 +75,7 @@ public class MouseAgent : Agent
     {
         if (collision.gameObject.CompareTag("fence"))
         {
-            AddReward(-0.1f);
+            dead = true;
         }
     }
 }
