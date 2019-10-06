@@ -33,7 +33,7 @@ public class MouseAgent : Agent
         AddVectorObs(rBody.velocity.z);
     }
 
-    public float speed = 10;
+    public float speed = .5f;
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         if (dead)
@@ -45,10 +45,36 @@ public class MouseAgent : Agent
         {
             SetReward(0.01f);
             // Actions, size = 2
+            //Debug.LogFormat("ControlSignal: {0} ; {1}", controlSignal.x, controlSignal.z);
+
             Vector3 controlSignal = Vector3.zero;
-            controlSignal.x = vectorAction[0];
-            controlSignal.z = vectorAction[1];
-            rBody.AddForce(controlSignal * speed);
+            var forwardAxis = (int)vectorAction[0];
+            var rightAxis = (int)vectorAction[1];
+
+            switch (forwardAxis)
+            {
+                case 1:
+                    transform.Translate(transform.forward*speed);
+                    break;
+                case 2:
+                    transform.Translate(-transform.forward *speed);
+                    break;
+
+            }
+
+            switch (rightAxis)
+            {
+                case 1:
+                    transform.Translate(transform.right * speed);
+                    break;
+                case 2:
+                    transform.Translate(-transform.right * speed);
+                    break;
+
+            }
+            //controlSignal.x = vectorAction[0];
+            //controlSignal.z = vectorAction[1];
+            //rBody.AddForce(controlSignal * speed);
 
             // Rewards
             float distanceToTarget = Vector3.Distance(this.transform.localPosition,
