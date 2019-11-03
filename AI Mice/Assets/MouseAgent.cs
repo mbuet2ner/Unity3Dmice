@@ -4,31 +4,51 @@ using MLAgents;
 
 public class MouseAgent : Agent
 {
+    [Header("MouseAgent Settings")]
+    public Transform Target;
     public float moveSpeed = 1f;
     public float rotateSpeed = 2f;
 
     private Rigidbody agentRigidbody;
+    private RayPerception rayPerception;
     private Vector3 startPos;
 
+    /// <summary>
+    ///  Initialize MouseAgent
+    /// </summary>
     void Start()
     {
         agentRigidbody = GetComponent<Rigidbody>();
+        rayPerception = GetComponent<RayPerception>();
         startPos = transform.localPosition;
     }
 
-    public Transform Target;
+    /// <summary>
+    /// Resets the agent to starting position
+    /// Resets velocity
+    /// </summary>
     public override void AgentReset()
     {
-        transform.localPosition = startPos;
-        this.agentRigidbody.angularVelocity = Vector3.zero;
-        this.agentRigidbody.velocity = Vector3.zero;
+         transform.localPosition = startPos;
+         this.agentRigidbody.angularVelocity = Vector3.zero;
+         this.agentRigidbody.velocity = Vector3.zero;
     }
 
+    /// <summary>
+    /// Obervations by the agent
+    /// Target and own position, vision of "fence" and "goal"
+    /// </summary>
     public override void CollectObservations()
     {
         // Target and Agent positions
         AddVectorObs(Target.localPosition);
         AddVectorObs(this.transform.localPosition);
+
+        // Add raycast perception observations for stumps and walls
+        float rayDistance = 20f;
+        float[] rayAngles = { 90f };
+        string[] detectableObjects = { "fence", "goal" };
+        //AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 
         // Add velocity observation
         Vector3 localVelocity = transform.InverseTransformDirection(agentRigidbody.velocity);
@@ -36,6 +56,12 @@ public class MouseAgent : Agent
         AddVectorObs(localVelocity.z);
     }
 
+    /// <summary>
+    /// The actions that MouseAgent is able to do
+    /// Moving and rotating
+    /// </summary>
+    /// <param name="vectorAction"></param>
+    /// <param name="textAction"></param>
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         // Determine the rotation action
@@ -49,7 +75,7 @@ public class MouseAgent : Agent
             rotateAmount = rotateSpeed;
         }
 
-        // Apply the rotation
+        // Apply the rotation (3D movement and rotation)
         Vector3 rotateVector = transform.up * rotateAmount;
         agentRigidbody.MoveRotation(Quaternion.Euler(agentRigidbody.rotation.eulerAngles + rotateVector * rotateSpeed));
 
@@ -77,14 +103,6 @@ public class MouseAgent : Agent
         {
             AddReward(1.0f / distanceToTarget);
         }
-        // Reached target
-        //else if (distanceToTarget < 1.42f)
-        //{
-        //    // Set rewards reset all previous rewards
-        //    // SetReward(1.0f);
-        //    AddReward(1.0f);
-        //    Done();
-        //}
 
         // Determine state
         if (GetCumulativeReward() <= -5f)
@@ -96,11 +114,14 @@ public class MouseAgent : Agent
         {
             // Encourage movement with a tiny time penalty and pdate the score text display
             AddReward(-.001f);
-            //agentArea.UpdateScore(GetCumulativeReward());
         }
 
     }
 
+    /// <summary>
+    /// If collision with "goal" or "fence"
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("goal"))
