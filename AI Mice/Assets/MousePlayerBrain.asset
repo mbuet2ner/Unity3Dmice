@@ -18,21 +18,21 @@ MonoBehaviour:
     vectorActionSize: 0300000003000000
     cameraResolutions: []
     vectorActionDescriptions:
-    - 
-    - 
+    - Move
+    - Turn
     vectorActionSpaceType: 0
   keyContinuousPlayerActions: []
   axisContinuousPlayerActions: []
   discretePlayerActions:
-  - key: 273
+  - key: 119
     branchIndex: 0
     value: 1
-  - key: 274
+  - key: 115
     branchIndex: 0
     value: 2
-  - key: 275
+  - key: 100
     branchIndex: 1
     value: 1
-  - key: 276
+  - key: 97
     branchIndex: 1
     value: 2
