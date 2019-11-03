@@ -4,6 +4,7 @@ Software Project University of Oulu. The goal is to create a basic testbed for f
 
 ## Basic info
 The provided RollerAgent project is based on [this](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Create-New.md) tutorial. More information is available from [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-ML-Agents.md) and [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md).
+Some code for the MouseAgent script is derived from [this](http://www.immersivelimit.com/tutorials/machine-learning-pig-agents-unity) tutorial.
 
 ## Used 3D models
 The project uses some prebuilt Blender 3D models for fast prototyping and at least somewhat pleasent looks:
