@@ -36,7 +36,6 @@ public class MouseAgent : Agent
         AddVectorObs(localVelocity.z);
     }
 
-    public float speed = .5f;
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         // Determine the rotation action
