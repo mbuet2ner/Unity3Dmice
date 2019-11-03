@@ -22,3 +22,5 @@ The project uses some prebuilt Blender 3D models for fast prototyping and at lea
 - [Low poly wolf](https://www.blendswap.com/blend/11562) by [PigArt](https://www.blendswap.com/profile/45794)
 
 - [Low poly forest assets](https://www.blendswap.com/blend/11274) by [PigArt](https://www.blendswap.com/profile/45794)
+
+![project](3dmice.jpg)
