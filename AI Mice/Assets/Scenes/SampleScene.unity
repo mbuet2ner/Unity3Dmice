@@ -8656,8 +8656,9 @@ MonoBehaviour:
   broadcastHub:
     broadcastingBrains:
     - {fileID: 11400000, guid: dfd61114c7ab3454badc4fb6bf458746, type: 2}
-    - {fileID: 0}
-    _brainsToControl: []
+    - {fileID: 11400000, guid: 10a40656c0b7eca4291c7a6d557b4a64, type: 2}
+    _brainsToControl:
+    - {fileID: 11400000, guid: 10a40656c0b7eca4291c7a6d557b4a64, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -72235,7 +72236,7 @@ GameObject:
   - component: {fileID: 1175515691740403421}
   m_Layer: 0
   m_Name: Plane.003
-  m_TagString: Untagged
+  m_TagString: goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76609,7 +76610,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4052311464681871520}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -76642,17 +76643,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d331cac69a24c42b8f2e94cfb1a79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: dfd61114c7ab3454badc4fb6bf458746, type: 2}
+  brain: {fileID: 11400000, guid: 10a40656c0b7eca4291c7a6d557b4a64, type: 2}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []
-    maxStep: 0
+    maxStep: 800
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
-  moveSpeed: 0.9
+  moveSpeed: 0.4
   rotateSpeed: 2
-  Target: {fileID: 2125011640081567835, guid: 93bd32ac033d0184198b56798fe30f57, type: 3}
+  Target: {fileID: 5094555818211315123}
 --- !u!1 &4068134200910313909
 GameObject:
   m_ObjectHideFlags: 0
