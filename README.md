@@ -26,4 +26,8 @@ The project uses some prebuilt Blender 3D models for fast prototyping and at lea
 
 - [Low poly forest assets](https://www.blendswap.com/blend/11274) by [PigArt](https://www.blendswap.com/profile/45794)
 
+- [Low poly Japanese Wood Lamp](https://www.blendswap.com/blend/23634) by [mark62726](https://www.blendswap.com/profile/973163)
+
+- [Low Poly Winter Animation](https://www.blendswap.com/blend/19647) by [SonnySee](https://www.blendswap.com/profile/1440)
+
 ![project](3dmice.jpg)
