@@ -30,4 +30,6 @@ The project uses some prebuilt Blender 3D models for fast prototyping and at lea
 
 - [Low Poly Winter Animation](https://www.blendswap.com/blend/19647) by [SonnySee](https://www.blendswap.com/profile/1440)
 
+- [American Speed Limit Sign](https://www.blendswap.com/blend/23692) by [cody977](https://www.blendswap.com/profile/498405)
+
 ![project](3dmice.jpg)
