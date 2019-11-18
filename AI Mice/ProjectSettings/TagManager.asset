@@ -27,6 +27,7 @@ TagManager:
   - pit
   - tree
   - fence
+  - sign
   layers:
   - Default
   - TransparentFX
