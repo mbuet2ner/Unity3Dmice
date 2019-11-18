@@ -13,6 +13,8 @@ public class MouseAgent : Agent
     private RayPerception rayPerception;
     private Vector3 startPos;
 
+    private bool signFirstHit = true;
+
     /// <summary>
     ///  Initialize MouseAgent
     /// </summary>
@@ -133,5 +135,8 @@ public class MouseAgent : Agent
         {
             AddReward(-.01f);
         }
+        else if (collision.gameObject.CompareTag("sign") && signFirstHit==true)
+            AddReward(1f);
+            signFirstHit = false;
     }
 }
