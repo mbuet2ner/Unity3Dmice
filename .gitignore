@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 
 /*/[Tt]emp/
+/*/[Bb]uild/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
@@ -70,3 +71,4 @@ RollerBall/Assets/ML-Agents/
 # Ignore "Gizmos" folder
 RollerBall/Assets/Gizmos/
 
+AI Mice/Assets/ML-Agents/UnitySDK.log

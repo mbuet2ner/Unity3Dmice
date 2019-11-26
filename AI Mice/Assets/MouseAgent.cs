@@ -10,7 +10,7 @@ public class MouseAgent : Agent
     public float rotateSpeed = 2f;
 
     private Rigidbody agentRigidbody;
-    private RayPerception rayPerception;
+    private RayPerception3D rayPerception;
     private Vector3 startPos;
 
     private bool signFirstHit = true;
@@ -21,7 +21,7 @@ public class MouseAgent : Agent
     void Start()
     {
         agentRigidbody = GetComponent<Rigidbody>();
-        rayPerception = GetComponent<RayPerception>();
+        rayPerception = GetComponent<RayPerception3D>();
         startPos = transform.localPosition;
     }
 
@@ -31,9 +31,9 @@ public class MouseAgent : Agent
     /// </summary>
     public override void AgentReset()
     {
-         transform.localPosition = startPos;
-         this.agentRigidbody.angularVelocity = Vector3.zero;
-         this.agentRigidbody.velocity = Vector3.zero;
+        transform.localPosition = startPos;
+        this.agentRigidbody.angularVelocity = Vector3.zero;
+        this.agentRigidbody.velocity = Vector3.zero;
     }
 
     /// <summary>
@@ -48,9 +48,9 @@ public class MouseAgent : Agent
 
         // Add raycast perception observations for stumps and walls
         float rayDistance = 20f;
-        float[] rayAngles = { 90f };
+        float[] rayAngles = { 90f, 180f, 270f, 360f };
         string[] detectableObjects = { "fence", "goal" };
-        //AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 
         // Add velocity observation
         Vector3 localVelocity = transform.InverseTransformDirection(agentRigidbody.velocity);
@@ -135,8 +135,8 @@ public class MouseAgent : Agent
         {
             AddReward(-.01f);
         }
-        else if (collision.gameObject.CompareTag("sign") && signFirstHit==true)
+        else if (collision.gameObject.CompareTag("sign") && signFirstHit == true)
             AddReward(1f);
-            signFirstHit = false;
+        signFirstHit = false;
     }
 }
