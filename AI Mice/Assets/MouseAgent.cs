@@ -10,7 +10,7 @@ public class MouseAgent : Agent
     public float rotateSpeed = 2f;
 
     private Rigidbody agentRigidbody;
-    private RayPerception3D rayPerception;
+    private RayPerception rayPerception;
     private Vector3 startPos;
 
     private bool signFirstHit = true;
@@ -21,7 +21,7 @@ public class MouseAgent : Agent
     void Start()
     {
         agentRigidbody = GetComponent<Rigidbody>();
-        rayPerception = GetComponent<RayPerception3D>();
+        rayPerception = GetComponent<RayPerception>();
         startPos = transform.localPosition;
     }
 
@@ -47,8 +47,8 @@ public class MouseAgent : Agent
         AddVectorObs(this.transform.localPosition);
 
         // Add raycast perception observations for stumps and walls
-        float rayDistance = 20f;
-        float[] rayAngles = { 90f, 180f, 270f, 360f };
+        float rayDistance = 15f;
+        float[] rayAngles = { 20f, 60f, 90f, 120f, 160f };
         string[] detectableObjects = { "fence", "goal" };
         AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 
@@ -97,9 +97,9 @@ public class MouseAgent : Agent
         agentRigidbody.AddForce(moveVector * moveSpeed, ForceMode.VelocityChange);
 
         // Rewards
-        float distanceToTarget = Vector3.Distance(this.transform.localPosition,
-                                                  Target.localPosition);
-
+        float distanceToTarget = Vector3.Distance(this.transform.position,
+                                                  Target.position);
+        //Debug.LogFormat("Distance to target: {0}", distanceToTarget);
         // Getting closer to target
         if (distanceToTarget > 1.42f)
         {

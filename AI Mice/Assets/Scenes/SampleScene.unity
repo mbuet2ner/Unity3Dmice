@@ -8735,7 +8735,8 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: dfd61114c7ab3454badc4fb6bf458746, type: 2}
     - {fileID: 11400000, guid: 10a40656c0b7eca4291c7a6d557b4a64, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: 10a40656c0b7eca4291c7a6d557b4a64, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -25348,7 +25349,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 3.573e-42, y: 1.02e-43, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
