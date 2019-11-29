@@ -128,15 +128,22 @@ public class MouseAgent : Agent
     {
         if (collision.gameObject.CompareTag("goal"))
         {
+            // visualize collision with goal
+            // remember to set gizmos in unity scene view
+            Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.green, 1, true);
             AddReward(5f);
             Done();
         }
         else if (collision.gameObject.CompareTag("fence"))
         {
+            // visualize collision with fence
+            Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.red, 1, true);
             AddReward(-.01f);
         }
         else if (collision.gameObject.CompareTag("sign") && signFirstHit == true)
+            // visualize collision with sign
+            Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.green, 1, true);
             AddReward(1f);
-        signFirstHit = false;
+            signFirstHit = false;
     }
 }
