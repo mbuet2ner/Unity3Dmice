@@ -28,6 +28,8 @@ TagManager:
   - tree
   - fence
   - sign
+  - mouse
+  - small mouse
   layers:
   - Default
   - TransparentFX
