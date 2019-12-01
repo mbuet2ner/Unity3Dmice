@@ -38,7 +38,7 @@ public class SmallMouseAgent : Agent
 
     /// <summary>
     /// Obervations by the agent
-    /// Target and own position, vision of "fence" and "goal"
+    /// Target and own position, vision of "fence" and "mouse"
     /// </summary>
     public override void CollectObservations()
     {
@@ -46,10 +46,10 @@ public class SmallMouseAgent : Agent
         AddVectorObs(Target.localPosition);
         AddVectorObs(this.transform.localPosition);
 
-        // Add raycast perception observations for fences and goals
+        // Add raycast perception observations for fences and mouses
         float rayDistance = 15f;
         float[] rayAngles = { 20f, 60f, 90f, 120f, 160f };
-        string[] detectableObjects = { "fence", "goal" };
+        string[] detectableObjects = { "fence", "mouse" };
         AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 
         // Add velocity observation
@@ -121,14 +121,14 @@ public class SmallMouseAgent : Agent
     }
 
     /// <summary>
-    /// If collision with "goal" or "fence"
+    /// If collision with "mouse" or "fence"
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("goal"))
+        if (collision.gameObject.CompareTag("mouse"))
         {
-            // visualize collision with goal
+            // visualize collision with mouse
             // remember to set gizmos in unity scene view
             Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.green, 1, true);
             AddReward(5f);
