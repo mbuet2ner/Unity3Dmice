@@ -25,19 +25,14 @@ public class Wolf : MonoBehaviour
 
        
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        transform.localPosition = startPos;
-        this.wolfRb.angularVelocity = Vector3.zero;
-        this.wolfRb.velocity = Vector3.zero;
-    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("mouse"))
         {
             transform.localPosition = startPos;
-            this.wolfRb.angularVelocity = Vector3.zero;
-            this.wolfRb.velocity = Vector3.zero;
+            //this.wolfRb.angularVelocity = Vector3.zero;
+            //this.wolfRb.velocity = Vector3.zero;
         }
     }
     }

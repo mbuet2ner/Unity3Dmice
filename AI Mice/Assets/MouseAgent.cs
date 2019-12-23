@@ -6,6 +6,7 @@ public class MouseAgent : Agent
 {
     [Header("MouseAgent Settings")]
     public Transform Target;
+    public Transform Enemy;
     public float moveSpeed = 1f;
     public float rotateSpeed = 2f;
 
@@ -44,6 +45,7 @@ public class MouseAgent : Agent
     {
         // Target and Agent positions
         AddVectorObs(Target.localPosition);
+        AddVectorObs(Enemy.localPosition);
         AddVectorObs(this.transform.localPosition);
 
         // Add raycast perception observations for fences and goals
@@ -99,11 +101,16 @@ public class MouseAgent : Agent
         // Rewards
         float distanceToTarget = Vector3.Distance(this.transform.position,
                                                   Target.position);
+        float distanceToEnemy = Vector3.Distance(this.transform.position, Enemy.position);
         //Debug.LogFormat("Distance to target: {0}", distanceToTarget);
         // Getting closer to target
         if (distanceToTarget > 1.42f)
         {
             AddReward(1.0f / distanceToTarget);
+        }
+        if (distanceToEnemy < 1.42f)
+        {
+            AddReward(-1.0f / distanceToEnemy);
         }
 
         // Determine state
