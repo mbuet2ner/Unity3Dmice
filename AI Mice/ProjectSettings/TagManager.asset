@@ -28,6 +28,8 @@ TagManager:
   - tree
   - fence
   - sign
+  - wolf
+  - mouse
   layers:
   - Default
   - TransparentFX
