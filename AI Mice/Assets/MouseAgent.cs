@@ -49,7 +49,7 @@ public class MouseAgent : Agent
         // Add raycast perception observations for fences and goals
         float rayDistance = 15f;
         float[] rayAngles = { 20f, 60f, 90f, 120f, 160f };
-        string[] detectableObjects = { "fence", "goal" };
+        string[] detectableObjects = { "fence", "goal", "wolf" };
         AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 
         // Add velocity observation

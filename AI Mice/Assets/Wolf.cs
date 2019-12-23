@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Wolf : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Mouse;
+    public float movSpeed;
+
+    private Rigidbody wolfRb;
+    private RayPerception rayPerception;
+    private Vector3 startPos;
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.LookAt(Mouse.transform);
+        transform.position += transform.forward * movSpeed * Time.deltaTime;
+
+       
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Mouse.GetComponent<MouseAgent>().AgentReset();
+        transform.localPosition = startPos;
+        this.wolfRb.angularVelocity = Vector3.zero;
+        this.wolfRb.velocity = Vector3.zero;
     }
 }
