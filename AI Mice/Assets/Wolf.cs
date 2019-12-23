@@ -8,11 +8,16 @@ public class Wolf : MonoBehaviour
     public float movSpeed;
 
     private Rigidbody wolfRb;
-    private RayPerception rayPerception;
     private Vector3 startPos;
 
 
     // Update is called once per frame
+
+    void Start()
+    {
+        wolfRb = GetComponent<Rigidbody>();
+        startPos = transform.localPosition;
+    }
     void Update()
     {
         transform.LookAt(Mouse.transform);
@@ -22,7 +27,6 @@ public class Wolf : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Mouse.GetComponent<MouseAgent>().AgentReset();
         transform.localPosition = startPos;
         this.wolfRb.angularVelocity = Vector3.zero;
         this.wolfRb.velocity = Vector3.zero;

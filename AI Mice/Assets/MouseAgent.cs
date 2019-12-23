@@ -141,9 +141,16 @@ public class MouseAgent : Agent
             AddReward(-.01f);
         }
         else if (collision.gameObject.CompareTag("sign") && signFirstHit == true)
+        { 
             // visualize collision with sign
             Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.green, 1, true);
             AddReward(1f);
             signFirstHit = false;
+        }
+        else if (collision.gameObject.CompareTag("wolf"))
+        {
+            //Reset Mouse if caught by Wolf
+            AgentReset();
+        }
     }
 }
