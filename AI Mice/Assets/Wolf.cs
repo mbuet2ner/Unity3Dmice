@@ -31,8 +31,7 @@ public class Wolf : MonoBehaviour
         if (collision.gameObject.CompareTag("mouse"))
         {
             transform.localPosition = startPos;
-            //this.wolfRb.angularVelocity = Vector3.zero;
-            //this.wolfRb.velocity = Vector3.zero;
+
         }
     }
     }

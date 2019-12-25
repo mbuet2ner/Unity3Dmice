@@ -11550,10 +11550,21 @@ PrefabInstance:
     - target: {fileID: 4130593236371476016, guid: 91b89c838bf053b4cac37a9aa776c534,
         type: 3}
       propertyPath: movSpeed
-      value: 5
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789426483875996834, guid: 91b89c838bf053b4cac37a9aa776c534,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91b89c838bf053b4cac37a9aa776c534, type: 3}
+--- !u!4 &307523668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1688941189400775128, guid: 91b89c838bf053b4cac37a9aa776c534,
+    type: 3}
+  m_PrefabInstance: {fileID: 307523667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &307920984
 GameObject:
   m_ObjectHideFlags: 0
@@ -25433,7 +25444,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -76763,7 +76774,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   Target: {fileID: 5094555818211315123}
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 307523668}
   moveSpeed: 0.4
   rotateSpeed: 2
 --- !u!114 &4052311464681871524
