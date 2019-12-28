@@ -8,20 +8,12 @@ public class WolfFOV : MonoBehaviour
     public float fovRadius;
     [Range(0, 360)]
     public float fovAngel;
-
     public LayerMask targetLayer;
     public LayerMask obstLayer;
-
     private Rigidbody wolfRb;
     private Vector3 startPos;
-
     public List<Transform> mouseInView = new List<Transform>();
-
-
     float baseDirection = 0;
-
-
-
 
     void Start()
     {
