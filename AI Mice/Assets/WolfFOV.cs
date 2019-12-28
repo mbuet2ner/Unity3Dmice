@@ -27,6 +27,7 @@ public class WolfFOV : MonoBehaviour
      transform.position += transform.forward * movSpeed * Time.deltaTime;
     }
 
+    //Coroutine calls the F
     IEnumerator FindMouseEnmu(float delay)
     {
         while (true)
@@ -39,16 +40,20 @@ public class WolfFOV : MonoBehaviour
     void FindMouse()
     {
         mouseInView.Clear();
+        //Gets the mice with the Target layer in the Wolfs FOV Radius
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, fovRadius, targetLayer);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform mouse = targetsInViewRadius[i].transform;
+            //Calculates direction of the mouse
             Vector3 dirToTarget = (mouse.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirToTarget) < fovAngel / 2)
             {
+                //Calculate distance to mouse
                 float dstToTarget = Vector3.Distance(transform.position, mouse.position);
 
+                //If there is a mouse in the FOV of the Wolf this adds the mouse to the mouseInView List and orients the Wolf to the mouse it sees
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstLayer))
                 {
                     mouseInView.Add(mouse);
@@ -67,16 +72,17 @@ public class WolfFOV : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collision other)
     {
 
-        if (collision.gameObject.CompareTag("fence"))
+        if (other.gameObject.CompareTag("fence"))
         {
-            Debug.Log("Hit");
+            Debug.Log("fence");
             baseDirection = baseDirection + Random.Range(-30, 30);
         }
-        else if (collision.gameObject.CompareTag("mouse"))
+        else if (other.gameObject.CompareTag("mouse"))
         {
+            Debug.Log("mouse");
             transform.localPosition = startPos;
 
         }
