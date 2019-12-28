@@ -58,7 +58,6 @@ public class WolfFOV : MonoBehaviour
         }
     }
 
-
     public Vector3 Direction(float angleInDegrees, bool angleIsGlobal)
     {
         if (!angleIsGlobal)
@@ -68,16 +67,12 @@ public class WolfFOV : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-
     void OnCollisionEnter(Collision col)
     {
 
         if (col.gameObject.tag == "fence")
         {
-            baseDirection = baseDirection + Random.Range(-30, 30);   // Switch to a new direction on collision
-
-            // use the above code as a template for all the collisionTags
-            // add here.. and on.. and on..
+            baseDirection = baseDirection + Random.Range(-30, 30);
         }
         else if (col.gameObject.tag == "mouse")
         {
