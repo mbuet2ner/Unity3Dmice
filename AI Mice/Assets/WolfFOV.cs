@@ -67,14 +67,15 @@ public class WolfFOV : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision collision)
     {
 
-        if (col.gameObject.tag == "fence")
+        if (collision.gameObject.CompareTag("fence"))
         {
+            Debug.Log("Hit");
             baseDirection = baseDirection + Random.Range(-30, 30);
         }
-        else if (col.gameObject.tag == "mouse")
+        else if (collision.gameObject.CompareTag("mouse"))
         {
             transform.localPosition = startPos;
 
