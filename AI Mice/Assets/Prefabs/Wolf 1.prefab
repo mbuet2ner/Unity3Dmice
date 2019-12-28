@@ -567,9 +567,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1688941189400775128}
   - component: {fileID: 8789426483875996834}
-  - component: {fileID: 4130593236371476016}
   - component: {fileID: 1742358938410619994}
   - component: {fileID: 3767639377157340346}
+  - component: {fileID: 5216120562771876014}
   m_Layer: 0
   m_Name: Wolf 1
   m_TagString: wolf
@@ -585,7 +585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2390015884972571595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.24, z: -31.32}
+  m_LocalPosition: {x: 0.4, y: 0.8, z: -31.32}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 615898507362999451}
@@ -612,20 +612,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4130593236371476016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2390015884972571595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc7254843b93a44c9effc9c57cacb33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mouse: {fileID: 0}
-  movSpeed: 1
 --- !u!54 &1742358938410619994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -640,7 +626,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!136 &3767639377157340346
 CapsuleCollider:
@@ -656,6 +642,28 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &5216120562771876014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2390015884972571595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0577f306f8db89a4b9c443a0231b7142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movSpeed: 1
+  viewRadius: 30
+  viewAngle: 129
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 512
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  visibleTargets: []
 --- !u!1 &2394947445314800422
 GameObject:
   m_ObjectHideFlags: 0
