@@ -4,7 +4,7 @@ Software Project University of Oulu. The goal is to create a basic testbed for f
 
 ## Basic info
 The provided RollerAgent project is based on [this](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Create-New.md) tutorial. More information is available from [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-ML-Agents.md) and [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md).
-Some code for the MouseAgent script is derived from [this](http://www.immersivelimit.com/tutorials/machine-learning-pig-agents-unity) tutorial. The Wolf was put together using [this] (https://www.youtube.com/watch?v=rQG9aUWarwE) tutorial
+Some code for the MouseAgent script is derived from [this](http://www.immersivelimit.com/tutorials/machine-learning-pig-agents-unity) tutorial. The Wolf was put together using [this](https://www.youtube.com/watch?v=rQG9aUWarwE) tutorial
 
 ## Setting up ml-agents
 In order to use ml-agents, you need to activate it first, using the following command: `activate ml-agents`. Afterwards, you have to enter the following command: `mlagents-learn config/config.yaml --run-id=3DMice --train`
