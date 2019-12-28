@@ -17843,7 +17843,7 @@ PrefabInstance:
     - target: {fileID: 5216120562771876014, guid: 91b89c838bf053b4cac37a9aa776c534,
         type: 3}
       propertyPath: viewAngle
-      value: 321
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 5216120562771876014, guid: 91b89c838bf053b4cac37a9aa776c534,
         type: 3}
@@ -17854,6 +17854,11 @@ PrefabInstance:
         type: 3}
       propertyPath: obstacleMask.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216120562771876014, guid: 91b89c838bf053b4cac37a9aa776c534,
+        type: 3}
+      propertyPath: movSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3767639377157340346, guid: 91b89c838bf053b4cac37a9aa776c534, type: 3}
